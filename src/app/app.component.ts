@@ -14,4 +14,11 @@ export class AppComponent {
     object : new FormControl('', [Validators.required,Validators.email]),
     message : new FormControl('', [Validators.required,Validators.email]),
   })
+  constructor(){}
+  Contact(){
+    if(this.HaMar.valid){
+      console.log(this.HaMar.value)
+    }
+    console.log(this.HaMar.value)
+  }
 }
