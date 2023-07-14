@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, FormGroupDirective, NgForm, FormArray } from '@angular/forms';
+import { EmailService } from './service/email.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +8,7 @@ import { FormBuilder, FormControl, Validators, FormGroup, FormGroupDirective, Ng
 })
 export class AppComponent {
   title = 'marketingDigital';
+  email:any
   public HaMar  = new FormGroup({
     nom : new FormControl('' , [Validators.required]),
     email : new FormControl('', [Validators.required,Validators.email]),
@@ -14,11 +16,25 @@ export class AppComponent {
     object : new FormControl('', [Validators.required,Validators.email]),
     message : new FormControl('', [Validators.required,Validators.email]),
   })
-  constructor(){}
+  constructor(private EmailService:EmailService){}
   Contact(){
-    if(this.HaMar.valid){
+
       console.log(this.HaMar.value)
-    }
-    console.log(this.HaMar.value)
+      this.email=this.HaMar.value.email
+      console.log(this.email)
+      //console.log(this.email)
+      console.log(this.HaMar.value)
+
+      // this.EmailService.AjouterClient(this.HaMar.value)
+      //this.EmailService.EnvoyerEmail(this.HaMar.value)
+
+
+
+  }
+  countryChange(country: any) {
+  }
+  telInputObject(obj:any) {
+    console.log(obj);
+    obj.setCountry('in');
   }
 }
